@@ -7,30 +7,34 @@ namespace RockPaperScissors
   public class GameTest
   {
     [Fact]
-    public void Shoot_Player2PaperBeatsRock_paper()
+    public void Shoot_GameIsATie_Tie()
     {
       // Arrange
-      int playerOneInput = 1; //1 is the integer for Rock.
-      int playerTwoInput = 2; //2 is the integer for Paper.
-      string expected = "Player Two Wins"; //expected outcome.
+      Game obj = new Game();
       // Act
-      string output = Game.Shoot(playerOneInput, playerTwoInput);
+      string output = obj.Shoot("scissors", "scissors");
       // Assert
-      Assert.Equal(expected, output);
+      Assert.Equal("Game is a Tie", output);
     }
-
     [Fact]
     public void Shoot_Player1PaperBeatsRock_paper()
     {
       // Arrange
-      int playerOneInput = 2; //paper
-      int playerTwoInput = 1; //rock
-      string expected = "Player One Wins";
+      Game obj = new Game();
       // Act
-      string output = Game.Shoot(playerOneInput, playerTwoInput);
+      string output = obj.Shoot("paper", "rock");
       // Assert
-      Assert.Equal(expected, output);
+      Assert.Equal("Player One Wins", output);
     }
-
+    [Fact]
+    public void Shoot_Player2PaperBeatsRock_paper()
+    {
+      // Arrange
+      Game obj = new Game();
+      // Act
+      string output = obj.Shoot("rock", "paper");
+      // Assert
+      Assert.Equal("Player Two Wins", output);
+    }
   }
 }
